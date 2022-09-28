@@ -5,9 +5,9 @@ jobs:
     name: pycodestyle
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: pycodestyle
-        uses: ankitvgupta/pycodestyle-action@master
+        uses: CS222-UIUC/course-project-group-7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRECOMMAND_MESSAGE: You have style errors. See them below.
