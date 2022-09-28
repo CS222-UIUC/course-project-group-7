@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: pycodestyle
-        uses: CS222-UIUC/course-project-group-7
+        uses: CS222-UIUC/course-project-group-7@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRECOMMAND_MESSAGE: You have style errors. See them below.
