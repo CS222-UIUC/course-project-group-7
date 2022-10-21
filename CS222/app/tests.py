@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 # Create your tests here.
@@ -9,10 +10,11 @@ from django.contrib.auth.forms import UserCreationForm
 class BaseTest(TestCase):
     def setUp(self):
         self.register_url = reverse('register')
+        self.login_url = reverse('login')
+
         self.user = {
             'username' : "testusername",
             'password' : "testpassword",
-            'password2' : 'testpassword',
         }
         self.short_password = {
             'username' : "testusername",
@@ -46,6 +48,24 @@ class BaseTest(TestCase):
             'username' : "",
             'password' : "",
             'password2' : "",
+        }
+
+        self.login_user = {
+            'username' : "jaden123",
+            'email' : "jalen.xing@gmail.com",
+            'password' : "mynameisjalen12",
+            'password2' : "mynameisjalen12"
+        }
+
+        self.invalid_email = {
+            "username" : "jaden230494",
+            'password' : "mynameisjalen123" 
+
+        }
+
+        self.null_password= {
+            'username' : "jaden12345",
+            'password' : "",
         }
         return super().setUp()
 
@@ -83,3 +103,29 @@ class RegisterTest(BaseTest):
     def test_null_values(self):
         form = UserCreationForm(self.null_values)
         self.assertFalse(form.is_valid())
+    
+class LoginTest(BaseTest):
+    def test_can_access_page(self):
+        response = self.client.get(self.login_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'register/login.html')
+    
+    def test_login_success(self):
+        User.objects.create_user(**self.user)
+        response = self.client.post('/login/', self.user, follow=True)
+        self.assertTrue(response.context['user'].is_active)
+
+    def test_unverified_email(self):
+        User.objects.create_user(**self.invalid_email)
+        response = self.client.post('/login/', self.invalid_email, follow=True)
+        self.assertTrue(response.context['user'].is_active)
+
+    def test_null_username(self):
+        User.objects.create_user(**self.invalid_email)
+        response = self.client.post('/login/', self.invalid_email, follow=True)
+        self.assertTrue(response.context['user'].is_active)
+
+    def test_null_password(self):
+        User.objects.create_user(**self.null_password)
+        response= self.client.post(self.login_url, self.null_password,format='text/html')
+        self.assertEqual(response.status_code,401)
