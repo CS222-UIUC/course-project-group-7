@@ -129,4 +129,3 @@ class LoginTest(BaseTest):
         User.objects.create_user(**self.null_password)
         response= self.client.post(self.login_url, self.null_password,format='text/html')
         self.assertEqual(response.status_code,401)
-
