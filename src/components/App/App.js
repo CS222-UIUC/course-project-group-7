@@ -6,6 +6,7 @@ import Dashboard from '../Dashboard/Dashboard'
 import Login from '../Login/Login'
 import Preferences from '../Preferences/Preferences'
 import Grid from '../Grid/Grid'
+import Grouping from '../Grouping/Grouping'
 
 // function setToken(userToken) {
 //   sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -28,7 +29,7 @@ function App() {
   return (
     <div>
       <h1>
-        <Grid />
+        <Grouping />
       </h1>
       <BrowserRouter>
         <Routes>
