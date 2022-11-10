@@ -2,8 +2,8 @@
 # from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-# from django.forms import ModelForm
-from .models import Student, UserStudent
+from django.forms import ModelForm
+from .models import Student
 from django import forms
 
 
@@ -18,26 +18,11 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ['name', 'major', 'hobbies', 'classes', 'social_media', 'email']
         widget = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'major': forms.TextInput(attrs={'class': 'form-control'}),
-            'hobbies': forms.TextInput(attrs={'class': 'form-control'}),
-            'classes': forms.TextInput(attrs={'class': 'form-control'}),
-            'social_media': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
-
-        }
-
-
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = UserStudent
-        fields = ['name', 'major', 'hobbies', 'classes', 'social_media', 'email']
-        widget = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'major': forms.TextInput(attrs={'class': 'form-control'}),
-            'hobbies': forms.TextInput(attrs={'class': 'form-control'}),
-            'classes': forms.TextInput(attrs={'class': 'form-control'}),
-            'social_media': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'name' : forms.TextInput(attrs= {'class' : 'form-control'}),
+            'major' : forms.TextInput(attrs= {'class' : 'form-control'}),
+            'hobbies' : forms.TextInput(attrs= {'class' : 'form-control'}),
+            'classes' : forms.TextInput(attrs= {'class' : 'form-control'}),
+            'social_media' : forms.TextInput(attrs= {'class' : 'form-control'}),
+            'email' : forms.TextInput(attrs= {'class' : 'form-control'}),
 
         }
