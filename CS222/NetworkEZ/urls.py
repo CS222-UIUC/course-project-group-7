@@ -24,5 +24,6 @@ urlpatterns = [
     path('login/', v.loginPage, name="login"),
     path('home/', v.home, name="home"),
     path('logout/', v.logoutUser, name="logout"),
-    path('profiles/', v.studentProfile, name="profiles")
+    path('profiles/', v.studentProfile, name="profiles"),
+    path('filtered_profiles/', v.filterStudentProfile, name= "filtered_profiles")
 ]
