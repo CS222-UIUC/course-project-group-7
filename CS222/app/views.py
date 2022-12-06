@@ -1,14 +1,13 @@
+# Views.py file that is used to connect the backend with the front-end
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-# from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from .forms import StudentForm, UserForm
 from .models import Student, UserStudent
-# import os
-# Create your views here.
 
 
+# Checks to see if there is a post request and registers a username and password if there is one
 def register(response):
     if response.method == "POST":
         form = CreateUserForm(response.POST)
@@ -22,7 +21,7 @@ def register(response):
 
     return render(response, 'register/register.html', {"form": form})
 
-
+# Authenticates the user to be logged in if the username and password are valid 
 def loginPage(request):
     error = False
     if request.method == "POST":
@@ -49,11 +48,12 @@ def loginPage(request):
     return render(request, 'register/login.html', context)
 
 
+# Logout the current user 
 def logoutUser(request):
     logout(request)
     return redirect('login')
 
-
+# Directs the user to the home page
 def home(response):
     if response.method == "POST":
         form = StudentForm(response.POST)
@@ -67,12 +67,12 @@ def home(response):
 
     return render(response, 'register/dashboard.html', {"form": form})
 
-
+# Shows the all of the profile's in the database
 def studentProfile(response):
     student_list = Student.objects.all()
     return render(response, 'register/student_profile.html', {'student_list': student_list})
 
-
+# Filtering used to find student's with the similar classes
 def filterStudentProfile(response):
     student_list = Student.objects.all()
 
@@ -88,7 +88,7 @@ def filterStudentProfile(response):
 
     return render(response, 'register/filtered_profiles.html', {'student_list': temp})
 
-
+# Filtering used to find student's with the similar hobbies
 def filterStudentHobbies(response):
     student_list = Student.objects.all()
     user_list = UserStudent.objects.all()
@@ -103,7 +103,7 @@ def filterStudentHobbies(response):
 
     return render(response, 'register/filtered_hobbies.html', {'student_list': temp})
 
-
+# Shows your own profile 
 def your_profile(response):
     user_list = UserStudent.objects.all()
 

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-# Create your tests here.
+# Test Cases for the backend of our project
 
 class BaseTest(TestCase):
     def setUp(self):
