@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# NetworkEZ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NetworkEZ is a communication platform built for students. During remote classes and lecture halls with hundreds of people, students often struggle with finding buddies to study with, partners to work with, and finding friends with similar interests. NetworkEZ matches students with their fellow classmates to bring together entire class sections and achieve the superior goal of learning. It allows students to see other students in their classes or have the same hobbies, and provides their social media for further exchanges to be made. 
 
-## Available Scripts
+# Technical Architecture
 
-In the project directory, you can run:
+NetworkEZ uses a HTML frontend and uses CSS for styling, Django backend with Python, as well as a SQLite database instance.
 
-### `npm start`
+Django handles the data posted from the HTML frontend as it handles form requests that are created upon registration, including names, classes, hobbies, etc. Matching is also done based upon the passed on data in the backend using string similarity sorting and matching. The Django backend interacts with the SQLite database and passed that data into the HTML front end as list to be displayed. User data includes registration data like usernames, passwords, emails alongside individual majors and hobbies, while student data includes other students' majors, hobbies, interests. We used Pylint as the linter for code style and Pytest to write unit tests. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Login and User Registration
 
-### `npm test`
+To begin, the login and user registration pages are at the forefront of the web app. Here users can input their username, password, and email to register. The user’s username, passwords, and emails are stored in a SQLLite database.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Navigation Bar
 
-### `npm run build`
+The navigation bar uses the django.urls that were initliazed in the backend to navigate throughout different pages. The pages include a list of student profiles, your own profiles, students that share a hobby and classes with you.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Data Display Pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The user can see a list of student profiles, your own profiles, students that share a hobby and classes with you with information such as people’s name, major, social media, and more. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Diagram
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Group Members
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Jalen Xing created the backend for the project that allows the user to enter their information and store it into the database, match the student’s based on their hobbies and shared classes, created the navigation bar that allows website navigation between the various pages, and created the front-end. 
 
-### Code Splitting
+Aditya Matiwala primarily worked on the front-end of the project, initially creating different components in React to display matches between users, pivoting to pure HTML and CSS instead.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Installation 
 
-### Analyzing the Bundle Size
+Git clone https://github.com/CS222-UIUC/course-project-group-7.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+python3 -m pip install django
 
-### Making a Progressive Web App
+python3 manage.py runserver
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Go to link http://127.0.0.1:8000/login/
 
-### Advanced Configuration
+# Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks a lot to our mentor Vansh for helping us throughout the project and giving us great feedback. 
