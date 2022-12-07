@@ -27,6 +27,9 @@ The user can see a list of student profiles, your own profiles, students that sh
 
 ## Diagram
 
+![alt text](https://raw.githubusercontent.com/CS222-UIUC/course-project-group-7/main/Screen%20Shot%202022-12-06%20at%208.58.49%20PM.png)
+
+
 
 
 
